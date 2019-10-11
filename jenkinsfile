@@ -1,6 +1,10 @@
 node('maven'){
 stage(1st stage') {
-sh "echo hello world"
+  // use the id of the globally configured maven instance
+  def mvntool = too1 'Apache maven 3.6.2'
+  
+ // execute maven
+ sh "echo hello world"
 }
 stage ('2nd stage') {
   sh "touch abc.txt"
