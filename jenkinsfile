@@ -11,6 +11,13 @@ sh "echo hello world"
 stage('artifacts'){
 archiveArtifacts '**/target/*.war'   
 }
+
+  stage ('docker build')
+    {
+      // sh  "docker version"
+        sh " docker build -t arjun321/myapp1:2.1.1 ."
+    }
+
 stage('deployment'){
         sshagent(['ec2-user']) {
         sh "ssh -o StrictHostKeyChecking=no ec2-user@54.89.229.80 /home/ec2-user/tomcat9/bin/startup.sh"
