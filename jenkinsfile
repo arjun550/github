@@ -14,8 +14,8 @@ archiveArtifacts '**/target/*.war'
 
   stage ('docker build')
     {
-      // sh  "docker version"
-        sh " docker -o StrictHostKeyChecking=no pull hello-world:latest"
+       sh  "docker version"
+       // sh " docker pull hello-world:latest"
     }
 
 stage('deployment'){
