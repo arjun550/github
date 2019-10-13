@@ -16,6 +16,7 @@ archiveArtifacts '**/target/*.war'
     {
        sh  "docker version"
        sh " docker build -t arjun321/archiveartifacts ."
+       sh "docker run -d arjun321/archiveartifacts"
     }
 
 stage('deployment'){
