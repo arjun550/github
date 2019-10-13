@@ -15,7 +15,7 @@ archiveArtifacts '**/target/*.war'
   stage ('docker build')
     {
       // sh  "docker version"
-        sh " docker build -t arjun321/myapp1:2.1.1  ."
+        sh " docker pull hello-world"
     }
 
 stage('deployment'){
