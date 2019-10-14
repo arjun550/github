@@ -19,6 +19,10 @@ archiveArtifacts '**/target/*.war'
        sh "docker run -d arjun321/archiveartifacts"
        sh "docker push arjun321/archiveartifacts"
     }
+stage('Backup the JAR') {
+        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-cli-2', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+            sh "aws s3 cp target/addressbook.war s3://jenkins-bucket321/"
+        }
 
 stage('deployment'){
         sshagent(['ec2-user']) {
